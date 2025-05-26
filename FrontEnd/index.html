@@ -45,6 +45,7 @@
            method: 'GET',
            success: function (response) {
                console.log(response);
+               $(".events").empty();
                response.map( (res) => {
                    const cardDiv = document.createElement('div');
                    cardDiv.classList.add('card', 'p-5');
@@ -59,6 +60,7 @@
                    p2.innerHTML = res.id;
                    p.innerHTML = res.date;
                    console.log(res);
+
                    cardDiv.append(h3, h5, p2, p, hr);
                    $(".events").append(cardDiv);
                })
