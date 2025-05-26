@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Mapping-Specification" />
         <module name="MIMETypes" />
+        <module name="App01" />
       </profile>
     </annotationProcessing>
   </component>

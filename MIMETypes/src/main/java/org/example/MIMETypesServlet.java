@@ -1,5 +1,7 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -33,13 +35,27 @@ public class MIMETypesServlet extends HttpServlet {
 //        resp.getWriter().print("Hello " + name + " " + address);
 //    }
 
+//
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        String name = req.getParameter("name");
+//        Part img = req.getPart("img");
+//        Part file = req.getPart("file");
+//        String fileName = file.getSubmittedFileName();
+//        String submittedFileName = img.getSubmittedFileName();
+//        resp.setContentType("text/plain");
+//        resp.getWriter().write(submittedFileName + " has been submitted, " + fileName + " has been submitted");
+//    }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        Part img = req.getPart("img");
-        String submittedFileName = img.getSubmittedFileName();
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readTree(req.getReader());
+        String name = jsonNode.get("name").asText();
+        String address = jsonNode.get("address").asText();
+
         resp.setContentType("text/plain");
-        resp.getWriter().write(submittedFileName + " has been submitted, " + name);
+        resp.getWriter().write(name + " " + address);
     }
 }
