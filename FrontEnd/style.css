@@ -1,0 +1,11 @@
+input {
+    width: 500px;
+}
+
+.form-control {
+    width: 250px !important;
+}
+
+.btn-grp {
+    margin-left: 200px;
+}
