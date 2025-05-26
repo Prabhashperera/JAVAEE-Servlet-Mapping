@@ -18,9 +18,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-<div class="events">
-    <div class="card cards mt-5 p-5">
-    </div>
+<div class="events d-flex justify-content-center mt-5 gap-3">
 </div>
 
 
@@ -35,19 +33,21 @@
            success: function (response) {
                console.log(response);
                response.map( (res) => {
-                   const h3 = document.createElement('h3');
-                   const h5 = document.createElement('h5');
+                   const cardDiv = document.createElement('div');
+                   cardDiv.classList.add('card', 'p-5');
+                   const h3 = document.createElement('h4');
+                   const h5 = document.createElement('h6');
                    const p = document.createElement('p');
                    const p2 = document.createElement('p');
                    const hr = document.createElement('hr');
-
 
                    h3.innerHTML = res.name;
                    h5.innerHTML = res.time;
                    p2.innerHTML = res.id;
                    p.innerHTML = res.date;
                    console.log(res);
-                   $(".cards").append(h3, h5, p2, p, hr);
+                   cardDiv.append(h3, h5, p2, p, hr);
+                   $(".events").append(cardDiv);
                })
            }
        })
