@@ -30,8 +30,19 @@
             <button type="button" class="getAllEvents btn btn-primary mt-5 px-5">Get ALL</button>
         </div>
     </form>
-    <div style="flex-wrap: wrap" class="events d-flex justify-content-center mt-5 gap-3">
-
+    <div>
+        <table class="table mt-5 container">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Event ID</th>
+                <th scope="col">Event Name</th>
+                <th scope="col">Event Time</th>
+                <th scope="col">Event Date</th>
+            </tr>
+            </thead>
+            <tbody class="event_table_body">
+            </tbody>
+        </table>
     </div>
 
 
@@ -47,22 +58,13 @@
                console.log(response);
                $(".events").empty();
                response.map( (res) => {
-                   const cardDiv = document.createElement('div');
-                   cardDiv.classList.add('card', 'p-5');
-                   const h3 = document.createElement('h4');
-                   const h5 = document.createElement('h6');
-                   const p = document.createElement('p');
-                   const p2 = document.createElement('p');
-                   const hr = document.createElement('hr');
-
-                   h3.innerHTML = res.name;
-                   h5.innerHTML = res.time;
-                   p2.innerHTML = res.id;
-                   p.innerHTML = res.date;
-                   console.log(res);
-
-                   cardDiv.append(h3, h5, p2, p, hr);
-                   $(".events").append(cardDiv);
+                   let data = `<tr>
+                                <td>${res.id}</td>
+                                <td>${res.name}</td>
+                                <td>${res.time}</td>
+                                <td>${res.date}</td>
+                               </tr>`
+                   $(".event_table_body").append(data);
                })
            }
        })
