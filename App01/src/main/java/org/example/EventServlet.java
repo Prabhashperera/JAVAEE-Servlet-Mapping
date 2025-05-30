@@ -55,8 +55,9 @@ public class EventServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Allow CORS (optional but helpful if calling from frontend)
-        resp.addHeader("Access-Control-Allow-Origin", "*");
-        resp.setContentType("application/json");
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:63342");
+        resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -85,4 +86,12 @@ public class EventServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+    @Override
+    protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:63342");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        response.setStatus(HttpServletResponse.SC_OK); // Very important!
+    }
+
 }
