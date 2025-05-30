@@ -39,12 +39,6 @@ public class EventServlet extends HttpServlet {
             }
             resp.setContentType("application/json");
 
-//            Cors Access
-            resp.addHeader("Access-Control-Allow-Origin", "*");
-            resp.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
-            resp.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
-            resp.addHeader("Access-Control-Max-Age", "1728000");
-
             ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(resp.getWriter(), elist);
         } catch (Exception e) {
@@ -54,10 +48,10 @@ public class EventServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Allow CORS (optional but helpful if calling from frontend)
-        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:63342");
-        resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//        // Allow CORS (optional but helpful if calling from frontend)
+//        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:63342");
+//        resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+//        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
