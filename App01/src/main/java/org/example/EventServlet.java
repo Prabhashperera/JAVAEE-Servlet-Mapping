@@ -48,10 +48,6 @@ public class EventServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        // Allow CORS (optional but helpful if calling from frontend)
-//        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:63342");
-//        resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-//        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
